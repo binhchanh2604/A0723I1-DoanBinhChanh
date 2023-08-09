@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createform</title>
+    <style>
+        .sothich {
+            color: white;
+            background-color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 500px">
+<form>
+    <div class="sothich">Sở thích của bạn</div>
+    <table>
+        <tr>
+            <td><label for="name">Họ và tên :</label><br></td>
+            <td>
+                <input type="text" id="name" name="name">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="email">Email :</label><br></td>
+            <td>
+                <input type="text" id="email" name="email">
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">Sở thích :</td>
+            <td>
+                <input type="radio" id="thethao" name="thethao" value="thethao">
+                <label for="thethao">Thể thao</label>
+                <input type="radio" id="amnhac" name="amnhac" value="amnhac">
+                <label for="amnhac">Âm nhạc</label>
+                <input type="radio" id="docsach" name="docsach" value="docsach">
+                <label for="docsach">Đọc sách</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="luotweb" name="luotweb" value="luotweb">
+                <label for="luotweb">Lướt web</label>
+                <input type="radio" id="choigame" name="choigame" value="choigame">
+                <label for="choigame">Chơi game</label>
+                <input type="radio" id="dienanh" name="dienanh" value="dienanh">
+                <label for="dienanh">Điện ảnh</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="dulich" name="dulich" value="dulich">
+                <label for="dulich">Du lịch</label>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Gửi thông tin">
+    <input type="reset" value="Nhập lại">
+</form>
+</div>
+</body>
+</html>
