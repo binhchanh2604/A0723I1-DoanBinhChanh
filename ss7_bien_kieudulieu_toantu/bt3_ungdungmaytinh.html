@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 14 Ứng dụng máy tính</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="2"><label for="so1"></label><input type="number" placeholder="Nhập số" id="so1"></td>
+        <td colspan="2"><label for="so2"></label><input type="number" placeholder="Nhập số" id="so2"></td>
+    </tr>
+    <tr>
+        <td><button onclick="cong()">Addition(+)</button></td>
+        <td><button onclick="tru()">Subtraction(-)</button></td>
+        <td><button onclick="nhan()">Multiplication(*)</button></td>
+        <td><button onclick="chia()">Division(/)</button></td>
+    </tr>
+</table>
+<p id="tinh">The results will be displayed here</p>
+<script>
+    function cong() {
+        let a = parseInt(document.getElementById("so1").value);
+        let b = parseInt(document.getElementById("so2").value);
+        let result;
+        result = a + b;
+        document.getElementById("tinh").innerHTML= "Result Addition: " + result;
+    }
+    function tru() {
+        let a = document.getElementById("so1").value;
+        let b = document.getElementById("so2").value;
+        let result;
+        result = a - b;
+        document.getElementById("tinh").innerHTML= "Result Subtraction: " + result;
+    }
+    function nhan() {
+        let a = document.getElementById("so1").value;
+        let b = document.getElementById("so2").value;
+        let result;
+        result = a * b;
+        document.getElementById("tinh").innerHTML= "Result Multiplication: " + result;
+    }
+    function chia() {
+        let a = document.getElementById("so1").value;
+        let b = document.getElementById("so2").value;
+        let result;
+        result = a / b;
+        document.getElementById("tinh").innerHTML= "Result Division: " + result;
+    }
+</script>
+</body>
+</html>

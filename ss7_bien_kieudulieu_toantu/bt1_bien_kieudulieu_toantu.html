@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 12</title>
+</head>
+<body>
+<div>
+    <h2>Bài 1 - tính điểm trung bình của một sinh viên</h2>
+    <label for="diemly">Nhập số điểm môn lí  : </label>
+    <input type="number" placeholder="Nhập điểm" id="diemly"/><br>
+    <label for="diemhoa">Nhập số điểm môn hóa: </label>
+    <input type="number" placeholder="Nhập điểm" id="diemhoa"/><br>
+    <label for="diemsinh">Nhập số điểm môn hóa: </label>
+    <input type="number" placeholder="Nhập điểm" id="diemsinh"/><br>
+    <div id="kqtinhdiem"></div>
+    <button onclick="Tinhdiem();" value="Tinh diem">Tính điểm</button>
+    <hr>
+</div>
+<div>
+    <h2>Bài 2 - chuyển đổi độ C sang độ F</h2>
+    <label for="doc">Nhập số độ c là: </label>
+    <input type="number" placeholder="Nhập số độ c" id="doc"/><br>
+    <div id="kqchuyendoi"></div>
+    <button onclick="chuyendoi();" value="Chuyendoi">Chuyển đổi</button>
+    <hr>
+</div>
+<div>
+    <h2>Bài 3 - Tính diện tích hình tròn</h2>
+    <label for="bankinh">Nhập số độ c là: </label>
+    <input type="number" placeholder="Nhập bán kính" id="bankinh"/><br>
+    <div id="kqdientich"></div>
+    <button onclick="dientich();" value="dientich">Diện tích</button>
+    <hr>
+</div>
+<div>
+    <h2>Bài 4 - Tính chu vi hình tròn</h2>
+    <label for="bankinh1">Nhập số độ c là: </label>
+    <input type="number" placeholder="Nhập bán kính" id="bankinh1"/><br>
+    <div id="kqchuvi"></div>
+    <button onclick="chuvi();" value="chuvi">Chu vi</button>
+    <hr>
+</div>
+
+<script>
+    function Tinhdiem() {
+        let a = parseFloat(document.getElementById("diemly").value);
+        let b = parseFloat(document.getElementById("diemhoa").value);
+        let c = parseFloat(document.getElementById("diemsinh").value);
+        let sum = a + b + c;
+        let average = sum/3;
+        document.getElementById("kqtinhdiem").innerHTML = `Tổng điểm ba môn là ${sum} và điểm trung bình ba môn là ${average}`;
+    }
+    function chuyendoi() {
+        let c = parseFloat(document.getElementById("doc").value);
+        let f = (c*9)/5 + 32;
+        document.getElementById("kqchuyendoi").innerHTML = "Số độ F là " + f;
+    }
+    function dientich() {
+        let r = parseFloat(document.getElementById("bankinh").value);
+        let dt = r * r * 3.14;
+        document.getElementById("kqdientich").innerHTML = "Diện tích đường tròn bằng " + dt;
+    }
+    function chuvi() {
+        let r = parseFloat(document.getElementById("bankinh1").value);
+        let cv = 2 * r * 3.14;
+        document.getElementById("kqchuvi").innerHTML = "Chu vi đường tròn bằng " + cv;
+    }
+</script>
+</body>
+</html>

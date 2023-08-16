@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 13 Chuyển đổi tiền tệ</title>
+    <style>
+        td {
+            text-align: center;
+            width: 150px;
+        }
+        input {
+            width: 150px;
+        }
+        select {
+            text-align: center;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+    </tr>
+    <tr>
+        <td><input type="number" id="sotien"></td>
+        <td>
+            <select id="From">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+        <td>
+            <select id="To">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+        <td><button onclick="chuyendoi()" value="tien" style="background-color: powderblue; color: black; font-size: 0.4cm ">Convert</button></td>
+    </tr>
+</table>
+<br>
+<div id="kqchuyendoi"></div>
+<script>
+    function chuyendoi() {
+        let a = parseFloat(document.getElementById("sotien").value);
+        let b = document.getElementById("From").value;
+        let c = document.getElementById("To").value;
+        let kq;
+        switch (b) {
+            case "USD":
+                if (c === "USD") {
+                    kq = + a +"$";
+                    break;
+                }
+                else {
+                    kq = + (23000*a) + "Đ";
+                    break;
+                }
+            case "VND":
+                if (c === "VND") {
+                    kq = + a + "Đ";
+                    break;
+                }
+                else {
+                    kq = + (a/23000) + "$";
+                    break;
+
+                }
+        }
+        document.getElementById("kqchuyendoi").innerHTML = "Result: " + kq;
+    }
+</script>
+</body>
+</html>
