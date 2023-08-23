@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 2</title>
+</head>
+<body>
+<div>
+    <h2> Bài 7 - Giải phương trình bậc 2</h2>
+    <label for="soa">Nhập số a : </label>
+    <input type="number" placeholder="Nhập số" id="soa"/>
+    <label for="sob">Nhập số b : </label>
+    <input type="number" placeholder="Nhập số" id="sob"/>
+    <label for="soc">Nhập số c : </label>
+    <input type="number" placeholder="Nhập số" id="soc"/>
+    <button onclick="result_cal();" value="cal">Calculation</button>
+    <div id="result"></div>
+</div>
+<script>
+    function result_cal() {
+        let a = parseFloat(document.getElementById("soa").value);
+        let b = parseFloat(document.getElementById("sob").value);
+        let c = parseFloat(document.getElementById("soc").value);
+        if (a === 0) {
+            if (b === 0) {
+                if (c === 0) {
+                    document.getElementById("result").innerHTML = "Phương trình vô số nghiệm";
+                } else {
+                    document.getElementById("result").innerHTML = "Phương trình vô nghiệm";
+                }
+            } else {
+                document.getElementById("result").innerHTML = "Nghiệm của phương trình là " + (-c/b);
+            }
+        } else {
+            const delta = (b * b) - (4 * a * c);
+            if (delta < 0) {
+                document.getElementById("result").innerHTML ="Phương trình vô nghiệm";
+            } else if (delta === 0) {
+                document.getElementById("result").innerHTML ="Phương trình có nghiệm kép là : " + (-b/(2*a));
+            } else {
+                const delta1 = Math.sqrt(delta);
+                document.getElementById("result").innerHTML ="Phương trình có 2 nghiệm là: "+" x<sub style=\"font-size: 0.7em\">1</sub>= " + ((-b+delta1)/(2*a)) + " ; x<sub style=\"font-size: 0.7em\">2</sub>= " + ((-b-delta1)/(2*a));
+            }
+        }
+    }
+</script>
+</body>
+</html>

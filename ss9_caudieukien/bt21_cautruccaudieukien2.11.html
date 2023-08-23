@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính thuế thu nhập cá nhân</title>
+</head>
+<body>
+<div>
+    <h2>Tính thuế thu nhập cá nhân</h2>
+    <label for="thu_nhap">Nhập thu nhập của bạn : </label>
+    <input type="number" placeholder="Nhập số " id="thu_nhap"/>
+    <button onclick="result_cal();" value="check">Tính Hoa Hồng</button>
+    <div id="result"></div>
+</div>
+<script>
+    function result_cal() {
+        let income = parseFloat(document.getElementById("thu_nhap").value);
+        if (income < 0) {
+            document.getElementById("result").innerHTML = "Vui lòng nhập lại doanh thu lớn hơn hoặc bằng 0";
+        } else {
+            if (income === 0) {
+                document.getElementById("result").innerHTML = "Bạn không nhận được hoa hồng từ doanh thu này";
+            } else if (income > 0 && income < 5000001) {
+                document.getElementById("result").innerHTML ="Với thuế suất 5% thì số tiền thuế phải đóng là " + 0.05*income + "vnd";
+            } else if (income < 10000001) {
+                document.getElementById("result").innerHTML = "Với thuế suất 10% thì số tiền thuế phải đóng là " + 0.1*income + "vnd";
+            } else if (income < 18000001) {
+                document.getElementById("result").innerHTML = "Với thuế suất 15% thì số tiền thuế phải đóng là " + 0.15*income + "vnd";
+            } else if (income < 32000001) {
+                document.getElementById("result").innerHTML = "Với thuế suất 20% thì số tiền thuế phải đóng là " + 0.2*income + "vnd";
+            } else if (income < 52000001) {
+                document.getElementById("result").innerHTML = "Với thuế suất 25% thì số tiền thuế phải đóng là " + 0.25*income + "vnd";
+            } else if (income < 80000001) {
+                document.getElementById("result").innerHTML = "Với thuế suất 30% thì số tiền thuế phải đóng là " + 0.3*income + "vnd";
+            } else {
+                document.getElementById("result").innerHTML = "Với thuế suất 35% thì số tiền thuế phải đóng là " + 0.35*income + "vnd";
+            }
+        }
+    }
+</script>
+</body>
+</html>

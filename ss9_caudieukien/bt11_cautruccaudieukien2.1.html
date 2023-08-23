@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi nhiệt độ</title>
+</head>
+<body>
+<div>
+    <h2>Bài 2.1 - chuyển đổi độ C sang độ F</h2>
+    <label for="do_c">Nhập số độ c là: </label>
+    <input type="number" placeholder="Nhập số độ c" id="do_c" min="-274"/>
+    <button onclick="chuyendoi();" value="Chuyendoi">Chuyển đổi</button>
+    <div id="result"></div>
+</div>
+<script>
+    function chuyendoi() {
+        let c = parseFloat(document.getElementById("do_c").value);
+        let f = (c*9)/5 + 32;
+        if (c < -273.15) {
+            document.getElementById("result").innerHTML = "Vui lòng nhập lại nhiệt độ lớn hơn -273.15";
+        } else {
+            document.getElementById("result").innerHTML = "Số độ F là " + f;
+        }
+    }
+</script>
+</body>
+</html>

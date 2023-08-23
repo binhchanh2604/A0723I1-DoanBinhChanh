@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giá điện</title>
+</head>
+<body>
+<h2>Tính giá điện tiêu dùng</h2>
+<div>
+    <ul>
+        <li>Giá điện dưới 51 kwh :1728vnd/kwh</li>
+        <li>Giá điện từ 51 - 100 kwh :1786vnd/kwh</li>
+        <li>Giá điện từ 101 - 200 kwh :2074vnd/kwh</li>
+        <li>Giá điện trên 200 kwh :2612vnd/kwh</li>
+    </ul>
+</div>
+<div>
+    <label for="so_chu_dien">Nhập số chữ điện là (kwh) : </label>
+    <input type="number" placeholder="Nhập số chữ điện " id="so_chu_dien"/>
+    <button onclick="result_cal();" value="check">Tính cước</button>
+    <div id="result_cal"></div>
+</div>
+<script>
+    function result_cal() {
+        let so_kwh = parseFloat(document.getElementById("so_chu_dien").value);
+        let fee;
+        if (so_kwh < 0) {
+            document.getElementById("result_cal").innerHTML = "Vui lòng nhập lại thông tin lớn hơn hoặc bằng 0!";
+        } else {
+            if (so_kwh === 0) {
+                fee = 0;
+                document.getElementById("result_cal").innerHTML = "Tiền điện phải trả cho " + so_kwh + " kwh này là " + fee + " vnd";
+            } else if (so_kwh > 0 && so_kwh < 51) {
+                fee = so_kwh * 1728;
+                document.getElementById("result_cal").innerHTML = "Tiền điện phải trả cho " + so_kwh + " kwh này là " + fee + " vnd";
+            } else if (so_kwh < 101) {
+                fee = (so_kwh-50)*1786 + 50*1728;
+                document.getElementById("result_cal").innerHTML = "Tiền điện phải trả cho " + so_kwh + " kwh này là " + fee + " vnd";
+            } else if (so_kwh < 201) {
+                fee = (so_kwh-100)*2074 + 50*1786 +50*1728;
+                document.getElementById("result_cal").innerHTML = "Tiền điện phải trả cho " + so_kwh + " kwh này là " + fee + " vnd";
+            } else {
+                fee = (so_kwh-200)*2612 + 100*2074 + 50*1786 +50*1728;
+                document.getElementById("result_cal").innerHTML = "Tiền điện phải trả cho " + so_kwh + " kwh này là " + fee + " vnd";
+            }
+        }
+    }
+</script>
+</body>
+</html>

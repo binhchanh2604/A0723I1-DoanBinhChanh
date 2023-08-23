@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi mét sang feet</title>
+</head>
+<body>
+<div>
+    <h2>Bài 2.2 - chuyển đổi mét sang feet</h2>
+    <label for="met">Nhập số độ c là: </label>
+    <input type="number" placeholder="Nhập số mét" id="met"/>
+    <button onclick="chuyendoi();" value="Chuyendoi">Chuyển đổi</button>
+    <div id="result"></div>
+</div>
+<script>
+    function chuyendoi() {
+        let m = parseFloat(document.getElementById("met").value);
+        if (m < 0 ) {
+            document.getElementById("result").innerHTML = "Vui lòng nhập số lớn hơn 0!";
+        } else {
+            let f = m * 3.2808;
+            document.getElementById("result").innerHTML = "Số feet là " + f;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi suất ngân hàng</title>
+</head>
+<body>
+<div>
+    <h2>Tính lãi suất ngân hàng</h2>
+    <table>
+        <tr>
+            <td><label for="money">Nhập số tiền vay ban đầu : </label></td>
+            <td><input type="number" placeholder="Nhập số" id="money"/></td>
+        </tr>
+        <tr>
+            <td><label for="thang_vay">Nhập số tháng vay : </label></td>
+            <td><input type="number" placeholder="Nhập số" id="thang_vay"/></td>
+        </tr>
+        <tr>
+            <td><label for="lai_suat">Nhập lãi suất hàng tháng (%) : </label></td>
+            <td><input type="number" placeholder="Nhập số" id="lai_suat"/></td>
+        </tr>
+        <tr>
+            <td><button onclick="result_cal();" value="cal">Calculation</button></td>
+        </tr>
+    </table>
+    <div id="result"></div>
+</div>
+<script>
+    function result_cal() {
+        let tien = parseFloat(document.getElementById("money").value);
+        let thang = parseFloat(document.getElementById("thang_vay").value);
+        let lai = parseFloat(document.getElementById("lai_suat").value);
+        if (tien < 0 || thang < 0 || lai < 0) {
+            document.getElementById("kq_check").innerHTML= "Vui lòng nhập thông tin lớn lớn hơn hoặc bằng 0";
+        } else {
+            let money=(tien*Math.pow((1+(lai/100)),thang))-tien;
+            document.getElementById("result").innerHTML="Số tiền lãi là: "+ money +" vnd";
+        }
+    }
+</script>
+</body>
+</html>

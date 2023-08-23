@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính cước điện thoại </title>
+</head>
+<body>
+<h2> Bài 7 - Tính cước điện thoại</h2>
+<div>
+    <ul>
+        <li>Tiền cước dưới 61 phút gọi :900vnd/p</li>
+        <li>Tiền cước từ 61-120 phút gọi :1000vnd/p</li>
+        <li>Tiền cước trên 120 phút gọi :1200vnd/p</li>
+    </ul>
+</div>
+<div>
+    <label for="time_call">Nhập thời gian gọi là (phút) : </label>
+    <input type="number" placeholder="Nhập thời gian gọi " id="time_call"/>
+    <button onclick="result_check();" value="check">Tính cước</button>
+    <div id="result"></div>
+</div>
+<!--suppress JSUnusedAssignment -->
+<script>
+    function result_check() {
+        let time_call = parseFloat(document.getElementById("time_call").value);
+        let fee;
+        if (time_call < 0) {
+            document.getElementById("result").innerHTML = "Vui lòng nhập lại thời gian gọi lớn hơn 0";
+        } else {
+            if (time_call === 0) {
+                fee = 0;
+                document.getElementById("result").innerHTML = "Tiền cước phải trả cho " + time_call + " phút là " + fee + " vnd";
+            } else if (time_call > 0 && time_call < 61) {
+                fee = time_call * 900;
+                document.getElementById("result").innerHTML = "Tiền cước phải trả cho " + time_call + " phút là " + fee + " vnd";
+            } else if (time_call < 121) {
+                fee = (time_call-60)*1000 + 60*900;
+                document.getElementById("result").innerHTML = "Tiền cước phải trả cho " + time_call + " phút là " + fee + " vnd";
+            } else {
+                let time;
+                fee = (time-120)* 1200 + 60*1000 + 60*900;
+                document.getElementById("result").innerHTML = "Tiền cước phải trả cho " + time_call + " phút là " + fee + " vnd";
+            }
+        }
+    }
+</script>
+</body>
+</html>

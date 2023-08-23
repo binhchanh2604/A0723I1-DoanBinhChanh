@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sánh với số 0</title>
+</head>
+<body>
+<div>
+    <h2> Bài 3 - So sánh với số 0</h2>
+    <label for="soa">Nhập số tuổi : </label>
+    <input type="number" placeholder="Nhập số " id="soa"/>
+    <button onclick="result_check();" value="check">Check</button>
+    <div id="result"></div>
+</div>
+<script>
+    function result_check() {
+        let so = parseInt(document.getElementById("soa").value);
+        if (so < 0) {
+            document.getElementById("result").innerHTML = "Số " + so + " nhỏ hơn số 0!" ;
+        } else if (so === 0) {
+            document.getElementById("result").innerHTML = "Số " + so + " bằng số 0!" ;
+        } else {
+            document.getElementById("result").innerHTML = "Số " + so + " lớn hơn số 0!" ;
+        }
+    }
+</script>
+</body>
+</html>

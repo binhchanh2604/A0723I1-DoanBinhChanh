@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xếp hạng học lực</title>
+</head>
+<body>
+<div>
+    <h2> Bài 5 - Xếp học lực của học sinh</h2>
+    <table>
+        <tr>
+            <td><label for="kt">Nhập điểm kiểm tra : </label></td>
+            <td><input type="number" placeholder="Nhập điểm" id="kt"/></td>
+        </tr>
+        <tr>
+            <td><label for="giua_ki">Nhập điểm giữa kì : </label></td>
+            <td><input type="number" placeholder="Nhập điểm" id="giua_ki"/></td>
+        </tr>
+        <tr>
+            <td><label for="cuoi_ki">Nhập điểm cuối kì : </label></td>
+            <td><input type="number" placeholder="Nhập điểm" id="cuoi_ki"/></td>
+        </tr>
+        <tr>
+            <td><button onclick="result_check();" value="check">Xếp hạng</button></td>
+        </tr>
+    </table>
+    <div id="result"></div>
+</div>
+<script>
+    function result_check() {
+        let diem_kt = parseFloat(document.getElementById("kt").value);
+        let diem_giuaki = parseFloat(document.getElementById("giua_ki").value);
+        let diem_cuoiki = parseFloat(document.getElementById("cuoi_ki").value);
+        let average = diem_kt * 0.2 + diem_giuaki * 0.2 + diem_cuoiki * 0.6;
+        if (diem_kt<0||diem_giuaki<0||diem_cuoiki<0){
+            document.getElementById("result").innerHTML="Vui lòng nhập số lớn hơn hoặc bằng 0";
+        } else {
+            if (average < 5) {
+                document.getElementById("result").innerHTML = "Điểm trung bình: " + average + ", Xếp loại học lực yếu";
+            } else if (average < 6.5) {
+                document.getElementById("result").innerHTML = "Điểm trung bình: " + average + ", Xếp loại học lực trung bình";
+            } else if ( average < 8) {
+                document.getElementById("result").innerHTML = "Điểm trung bình: " + average + ", Xếp loại học lực khá";
+            } else if (average <9.5) {
+                document.getElementById("result").innerHTML = "Điểm trung bình: " + average + ", Xếp loại học lực giỏi";
+            } else {
+                document.getElementById("result").innerHTML = "Điểm trung bình: " + average + ", Xếp loại học lực xuất sắc";
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

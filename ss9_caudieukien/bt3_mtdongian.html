@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        input {
+            width: 40px;
+        }
+        table {
+            border: black solid 3px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td colspan="4"><label for="show"></label><input type="text" id="show" style="width: 165px;" placeholder="Nhập biểu thức"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="add(this.value)"></td>
+            <td><input type="button" value="2" onclick="add(this.value)"></td>
+            <td><input type="button" value="3" onclick="add(this.value)"></td>
+            <td><input type="button" value="+" onclick="add(this.value)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="add(this.value)"></td>
+            <td><input type="button" value="5" onclick="add(this.value)"></td>
+            <td><input type="button" value="6" onclick="add(this.value)"></td>
+            <td><input type="button" value="-" onclick="add(this.value)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="add(this.value)"></td>
+            <td><input type="button" value="8" onclick="add(this.value)"></td>
+            <td><input type="button" value="9" onclick="add(this.value)"></td>
+            <td><input type="button" value="*" onclick="add(this.value)"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="C" onclick="reset_expression()"></td>
+            <td><input type="button" value="0" onclick="add(this.value)"></td>
+            <td><input type="button" value="=" onclick="cal()"></td>
+            <td><input type="button" value="/" onclick="add(this.value)"></td>
+        </tr>
+    </table>
+</form>
+<script>
+    const input_value = document.getElementById("show");
+
+    function add(value) {
+        input_value.value +=value;
+    }
+    function cal() {
+        input_value.value = eval(input_value.value);
+    }
+    function reset_expression() {
+        input_value.value = "";
+    }
+</script>
+</body>
+</html>

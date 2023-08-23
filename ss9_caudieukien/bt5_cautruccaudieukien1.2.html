@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xét điều kiện vào lớp 10</title>
+</head>
+<body>
+<div>
+    <h2> Bài 2 - Kiểm tra điều kiện vào lớp 10</h2>
+    <label for="sotuoi">Nhập số tuổi : </label>
+    <input type="number" placeholder="Nhập số tuổi" id="sotuoi"/>
+    <button onclick="result_check();" value="check">Check</button>
+    <div id="kqcheck"></div>
+</div>
+<script>
+    function result_check() {
+        let age = parseInt(document.getElementById("sotuoi").value);
+        if (age <0) {
+            document.getElementById("kqcheck").innerHTML = "Vui lòng nhập lại số tuổi lớn hơn 0";
+        } else {
+            if (age < 15) {
+                document.getElementById("kqcheck").innerHTML = " Số tuổi không đủ điều kiện vào lớp 10";
+            } else {
+                document.getElementById("kqcheck").innerHTML = "Số tuổi đủ điều kiện vào lớp 10";
+            }
+        }
+    }
+</script>
+</body>
+</html>

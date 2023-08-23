@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 1: ax + b = 0</title>
+</head>
+<body>
+<div>
+    <h2> Bài 6 - Giải phương trình bậc 1: ax + b = 0</h2>
+    <label for="soa">Nhập số a : </label>
+    <input type="number" placeholder="Nhập số" id="soa"/>
+    <label for="sob">Nhập số b : </label>
+    <input type="number" placeholder="Nhập số" id="sob"/>
+    <button onclick="result_cal();" value="cal">Calculation</button>
+    <div id="result"></div>
+</div>
+<script>
+    function result_cal() {
+        let a = parseFloat(document.getElementById("soa").value);
+        let b = parseFloat(document.getElementById("sob").value);
+        if (a === 0) {
+            if (b === 0) {
+                document.getElementById("result").innerHTML = "Phương trình vô số nghiệm";
+            } else {
+                document.getElementById("result").innerHTML = "Phương trình vô nghiệm";
+            }
+        } else {
+            document.getElementById("result").innerHTML = "Nghiệm của phương trình là " + (-b/a);
+        }
+    }
+</script>
+</body>
+</html>
