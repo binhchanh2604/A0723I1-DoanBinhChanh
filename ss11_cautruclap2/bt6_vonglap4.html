@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số chia hết  cho 5 đầu tiên trong dãy Fibonacci</title>
+</head>
+<body>
+<h3>Số chia hết  cho 5 đầu tiên trong dãy Fibonacci</h3>
+<!--suppress JSUnusedAssignment -->
+<script>
+    let f1=1;
+    let f2=1;
+    let f;
+    while (f%6!==0) {
+        f=f1+f2;
+        f1=f2;
+        f2=f;
+    }
+    document.write(f);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành với vòng lặp for</title>
+</head>
+<body>
+<h2>Thực hành với vòng lặp for</h2>
+<p id="demo"></p>
+<hr>
+<script>
+    let num = parseInt(prompt("Nhập số:"));
+    for (let i = 0; i<5; i++) {
+        document.write("The number is " + i + "</br>");
+    }
+    let sum = 0;
+    for (let i=1;i<=num;i++) {
+        sum+=i;
+    }
+    document.getElementById("demo").innerHTML="Total = " +sum;
+</script>
+</body>
+</html>

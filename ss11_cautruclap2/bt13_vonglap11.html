@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In các hình tam giác</title>
+</head>
+<body>
+<script>
+    const height = 5;
+    for (let i = 1; i <= height; i++) {
+        for (let j = 1; j <= i; j++) {
+            document.write('*');
+        }
+        document.write('<br/>');
+    }
+    document.write('<br/>');
+    for (let i = height; i >= 1; i--) {
+        for (let j = 1; j <= i; j++) {
+            document.write('*');
+        }
+        document.write('<br/>');
+    }
+    document.write( '<br/>');
+
+    document.write("<div style='width: 40px' align='right'>")
+    for (let i = 1; i <= height; i++){
+        for (let j = 1; j <= i ; j++){
+            document.write('*');
+            //
+        }
+        document.write("<br>");
+    }
+    document.write("</div><br>");
+
+    document.write("<div style='width: 40px' align='right'>")
+    for (let i = height; i >= 1 ; i--){
+        for (let j = 1; j <= i ; j++){
+            document.write('*');
+        }
+        document.write("<br>");
+    }
+    document.write("</div>");
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra nhiệt độ</title>
+</head>
+<body>
+<script>
+    let temperature = parseFloat(prompt("Nhập nhiệt độ hiện tại"));
+    while (temperature<20 || temperature>100) {
+        if (temperature <20 ) {
+            temperature = parseFloat(prompt("Nhiệt độ quá lạnh,vui lòng tăng nhiệt độ"));
+        } else if (temperature>100) {
+            temperature = parseFloat(prompt("Nhiệt độ quá nóng,vui lòng giảm nhiệt độ"));
+        }
+    }
+    document.write("Nhiệt độ đã bình thường!");
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giai thừa của một số</title>
+</head>
+<body>
+<div>
+    <h2>Tính giai thừa của một số</h2>
+    <label for="number">Nhập số muốn tính giai thừa là : </label>
+    <input type="number" placeholder="Nhập số " id="number"/>
+    <button onclick="result_cal();" value="calculation">Calculation</button>
+    <div id="result"></div>
+</div>
+<script>
+    function result_cal() {
+        let num = parseInt(document.getElementById("number").value);
+        let giaiThua=1;
+        if (num<=0) {
+            document.getElementById("result").innerHTML="Vui lòng nhập lại số";
+        } else  {
+            for (let i=1;i<=num;i++) {
+                giaiThua=giaiThua*i;
+            }
+            document.getElementById("result").innerHTML="Giai thừa của " + num + " là " +giaiThua;
+        }
+    }
+</script>
+</body>
+</html>

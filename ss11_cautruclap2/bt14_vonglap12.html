@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In hình chữ nhật</title>
+</head>
+<body>
+<script>
+    let canhDai = parseInt(prompt("Nhập kích thước cạnh dài của hình chữ nhật"));
+    let canhNgan = parseInt(prompt("Nhập kích thước cạnh ngắn của hình chữ nhật"));
+    if (canhNgan > 0 && canhDai > 0) {
+        for (let i=1;i<=canhNgan;i++) {
+            for (let j=1;j<=canhDai;j++) {
+                if (i===1 || j===1 || i===canhNgan || j===canhDai) {
+                    document.write("*");
+                } else {
+                    document.write("&nbsp;&nbsp");
+                }
+            }
+            document.write("<br>");
+        }
+    } else {
+        alert("không thể vẽ được")
+    }
+</script>
+</body>
+</html>

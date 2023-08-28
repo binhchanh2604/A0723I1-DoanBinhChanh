@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dãy số Fibonacci</title>
+</head>
+<body>
+<h3>Dãy 20 số Fibinacci</h3>
+<script>
+    let f1=1;
+    let f2=1;
+    let count =2;
+    document.write(f1+"<br>");
+    document.write(f2+"<br>");
+    for (let i=3;i<=20;i++) {
+        let f=f1+f2;
+        document.write(f+"<br>");
+        f1=f2;
+        f2=f;
+    }
+</script>
+</body>
+</html>

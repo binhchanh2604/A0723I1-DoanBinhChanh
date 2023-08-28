@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game hãy thử đoán xem</title>
+</head>
+<body>
+<p style="color: #d61b06;font-size: 0.5cm; font-family:'Arial Narrow',sans-serif">Trò Chơi đoán số</p>
+<button onclick="doanso();">Bắt đầu</button>
+<script>
+    function doanso() {
+        let number = parseFloat(prompt("Số bạn muốn đoán trong khoảng lớn nhất là bao nhiêu?"));
+        let number_random = Math.floor(Math.random()*number);
+        let number_check = parseInt(prompt("Nhập số bạn đoán"));
+        let count = 0;
+        while (number_random !== number_check) {
+            count++;
+            if (count  === 4) {
+                alert("Bạn đã hết số lần đoán");
+                break;
+            } else if (number_check<number_random) {
+                alert("Số bạn đoán bé hơn");
+            } else {
+                alert("số bạn đoán lớn hơn")
+            }
+            number_check = parseInt(prompt("Nhập số bạn đoán"));
+        }
+        if (count === 4) {
+            document.write("Bạn hết số lần đoán")
+        } else {
+            document.write("Bạn đã đoán đúng số. Chúc mừng bạn!")
+        }
+    }
+</script>
+</body>
+</html>
