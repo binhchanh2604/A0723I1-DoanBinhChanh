@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V is in the array?</title>
+</head>
+<body>
+<script>
+    let arr = new Array(10);
+    for (let i=0;i<arr.length;i++){
+        arr[i] = Math.floor(Math.random()*100 + 1);
+        console.log(arr[i]);
+    }
+    document.write("My array: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]+"&nbsp; ");
+    }
+    document.write("<br>");
+    let result = false;
+    let v = parseInt(prompt("Nhập số v"));
+    for (let i = 0; i < arr.length; i++) {
+        if (v === arr[i]) {
+            result = true;
+            break;
+        }
+    }
+    if (result) {
+        document.write("V is in the array");
+    } else {
+        document.write("V is not in the array");
+    }
+</script>
+</body>
+</html>

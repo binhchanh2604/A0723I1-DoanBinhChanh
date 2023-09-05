@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arrayJoin</title>
+</head>
+<body>
+<p id="myColor"></p>
+<script>
+    let numString= parseInt(prompt("Mời bạn nhập vào số phần tử :"));
+    let arr = new Array(numString)
+    for (let i= 0; i< arr.length; i++) {
+        arr[i] = prompt("Nhập phần tử " + i + "là");
+    }
+    let arrJoin = arr.join(",")
+    document.write(arrJoin)
+    document.write("<br>")
+
+</script>
+</body>
+</html>

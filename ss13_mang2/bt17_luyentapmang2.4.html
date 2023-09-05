@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số từ trong một chuỗi</title>
+</head>
+<body>
+<script>
+    let str = prompt("Chuỗi bạn muốn nhâp là ");
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (isNaN(str[i])) {
+            count++;
+        }
+    }
+    document.write("Số từ có trong chuỗi là " +count);
+</script>
+</body>
+</html>

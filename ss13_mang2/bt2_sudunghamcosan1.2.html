@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chèn dấu giữa 2 số chẵn</title>
+</head>
+<body>
+<script>
+    let num= parseInt(prompt("Mời bạn nhập số để kiểm tra :"));
+    let str = num.toString();
+    let result = [str[0]]; //Result trong Javascript là một từ dùng để chỉ giá trị mà một hàm trả về cho nơi gọi hàm
+    for(let a=1; a<str.length; a++)
+    {
+        if((str[a-1]%2 === 0)&&(str[a]%2 === 0))
+        {
+            result.push('-', str[a]);
+        }
+        else
+        {
+            result.push(str[a]);
+        }
+    }
+    document.write(result.join("") )
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sắp xếp mảng giảm dần</title>
+</head>
+<body>
+<script>
+    let arr = new Array(10);
+    for (let i=0;i<arr.length;i++){
+        arr[i] = Math.floor(Math.random()*100 + 1);
+        console.log(arr[i]);
+    }
+    document.write("My array: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]+"&nbsp; ");
+    }
+    document.write("<br>");
+    let bienTam;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr.length ; j++) {
+            if (arr[i]>arr[j]) {
+                bienTam = arr[i];
+                arr[i] = arr[j];
+                arr[j] = bienTam;
+            }
+        }
+    }
+    document.write("The array has been sorted: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]+"&nbsp; ");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giá trị lớn nhất trong mảng</title>
+</head>
+<body>
+<script>
+    // let numString = parseInt(prompt("Nhập số lượng phần tử của mảng"));
+    // let arr = new Array(numString);
+    // for (let i = 0; i < arr.length; i++) {
+    //     arr[i] = prompt("Nhập phần tử thứ " +i + "là");
+    //     console.log(arr[i]);
+    // }
+    let arr = new Array(10);
+    for (let i=0;i<arr.length;i++){
+        arr[i] = Math.floor(Math.random()*100 + 1);
+        console.log(arr[i]);
+    }
+    document.write("My array: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]+"&nbsp; ");
+    }
+    document.write("<br>");
+    let max = arr[0];
+    let indexMax = 1;
+    for (let i =1; i < arr.length; i++) {
+        if (max < arr[i]) {
+            max = arr[i];
+            indexMax = i+1;
+        }
+    }
+    document.write("Phần tử " + max + " có giá trị lớn nhất nằm ở vị trí thứ " +indexMax +" trong mảng" );
+</script>
+</body>
+</html>

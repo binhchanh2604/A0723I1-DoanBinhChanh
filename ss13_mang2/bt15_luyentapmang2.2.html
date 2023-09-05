@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đảo ngược phần tử trong mảng</title>
+</head>
+<body>
+<script>
+    let numString = parseInt(prompt("Nhập số lượng phần tử của mảng"));
+    let arr = new Array(numString);
+    document.write("My array: ");
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập phần tử thứ " +i + "là");
+        document.write(arr[i]+"&nbsp; ");
+    }
+    document.write("<br>");
+    let arrOutput = new Array(numString);
+    for (let i = arr.length - 1, j= 0; i >= 0, j < arr.length; i--, j++) {
+        arrOutput[j] = arr[i];
+    }
+    document.write("The array after reversing is: ")
+    for (let i = 0; i < arrOutput.length; i++) {
+        document.write(arrOutput[i] + "&nbsp; ");
+    }
+</script>
+</body>
+</html>

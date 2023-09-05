@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sánh mảng với số 10</title>
+</head>
+<body>
+<script>
+    let numString = parseInt(prompt("Nhập số lượng phần tử của mảng"));
+    let arr = new Array(numString);
+    let result = 0;
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập phần tử thứ " +i + "là");
+    }
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+        if (arr[i]>=10) {
+            result+=1;
+        }
+    }
+    document.write("My array: ");
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i]+"&nbsp; ");
+    }
+    document.write("<br>");
+    document.write("số phần tử trong mảng lớn >= 10 là " + result);
+</script>
+</body>
+</html>
