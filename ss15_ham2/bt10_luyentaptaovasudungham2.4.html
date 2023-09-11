@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isDigit(character) {
+        return !isNaN(parseFloat(character)) && isFinite(character);
+    }
+
+    let character = parseInt(prompt('Nhập vào một số :'))
+    let check = isDigit(character);
+    alert(check);
+</script>
+</body>
+</html>

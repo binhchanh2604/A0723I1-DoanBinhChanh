@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function calculateCircleArea(radius) {
+        return Math.PI * radius * radius;
+    }
+
+    function calculateCircleCircumference(radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    let radius = parseInt(prompt('Nhập bán kính hình tròn :'))
+    let area = calculateCircleArea(radius);
+    let circumference = calculateCircleCircumference(radius);
+
+    alert("Diện tích hình tròn với bán kính " + radius + " là: " + area);
+    alert("Chu vi hình tròn với bán kính " + radius + " là: " + circumference);
+</script>
+</body>
+</html>
