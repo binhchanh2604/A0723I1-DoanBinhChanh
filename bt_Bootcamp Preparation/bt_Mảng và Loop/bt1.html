@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function prefixSums(a) {
+        let b = new Array(a.length);
+        b[0] = a[0];
+        for (let i = 1; i < a.length; i++) {
+            b[i] = b[i - 1] + a[i];
+        }
+        return b;
+    }
+
+    let a = prompt("Nhập mảng số nguyên, cách nhau bởi dấu phẩy: ").split(',').map(Number);
+    let b = prefixSums(a);
+
+    console.log("Mảng a: ", a);
+    console.log("Mảng b (prefix sums của a): ", b);
+</script>
+</body>
+</html>

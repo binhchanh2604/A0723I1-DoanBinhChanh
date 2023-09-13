@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function kiemTraKyTu(kyTu) {
+        let nguyenAm = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+        if (nguyenAm.includes(kyTu)) {
+            return "Nguyên âm";
+        } else if ((kyTu >= 'a' && kyTu <= 'z') || (kyTu >= 'A' && kyTu <= 'Z')) {
+            return "Phụ âm";
+        } else {
+            return "Không phải là một ký tự trong bảng chữ cái tiếng Anh";
+        }
+    }
+
+    let kyTu = prompt("Nhập một ký tự: ");
+    let ketQua = kiemTraKyTu(kyTu);
+
+    alert(kyTu + " là " + ketQua);
+</script>
+</body>
+</html>

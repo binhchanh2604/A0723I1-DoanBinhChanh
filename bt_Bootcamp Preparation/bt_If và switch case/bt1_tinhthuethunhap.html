@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+</head>
+<body>
+<script>
+    function tinhThueVaLuongRong(luong) {
+        let thue;
+        if (luong >= 15) {
+            thue = luong * 0.2;
+        } else if (luong >= 7) {
+            thue = luong * 0.1;
+        } else {
+            thue = luong * 0.05;
+        }
+
+        let luongRong = luong - thue;
+        return {thue, luongRong};
+    }
+
+    let luong = prompt("Nhập lương của bạn (triệu VND): ");
+    luong = parseFloat(luong);
+    let {thue, luongRong} = tinhThueVaLuongRong(luong);
+
+    alert("Thuế thu nhập: " + thue + " triệu VND");
+    alert("Lương ròng: " + luongRong + " triệu VND");
+
+</script>
+</body>
+</html>
