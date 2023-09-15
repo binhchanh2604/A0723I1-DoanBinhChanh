@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #total {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Menu</h2>
+<button onclick="orderDrink(1)">1. Cafe - 20000 VND</button><br>
+<button onclick="orderDrink(2)">2. Cam vắt - 30000 VND</button><br>
+<button onclick="orderDrink(3)">3. Nước ép cà rốt - 25000 VND</button><br>
+<button onclick="orderDrink(4)">4. Nước ép cà chua - 25000 VND</button><br>
+<button onclick="orderDrink(5)">5. Nước lọc - 5000 VND</button><br>
+<button onclick="orderDrink(6)">6. Nước dừa - 15000 VND</button><br>
+<button onclick="endOrder()">7. Thoát gọi món</button><br>
+
+<p id="total"></p>
+
+<script>
+    let menu = {
+        1: {name: 'Cafe', price: 20000},
+        2: {name: 'Cam vắt', price: 30000},
+        3: {name: 'Nước ép cà rốt', price: 25000},
+        4: {name: 'Nước ép cà chua', price: 25000},
+        5: {name: 'Nước lọc', price: 5000},
+        6: {name: 'Nước dừa', price: 15000}
+    };
+
+    let total = 0;
+
+    function orderDrink(choice) {
+        let quantity = Number(prompt('Nhập số lượng:'));
+        total += menu[choice].price * quantity;
+        document.getElementById("total").innerHTML = 'Tổng tiền hiện tại: ' + total + ' VND';
+    }
+
+    function endOrder() {
+        document.getElementById("total").innerHTML = 'Tổng tiền cần thanh toán: ' + total + ' VND';
+    }
+</script>
+
+</body>
+</html>
