@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function soKyTuChung(xau1, xau2) {
+        let set1 = new Set(xau1);
+        let set2 = new Set(xau2);
+        let soKyTuChung = 0;
+
+        for (let kyTu of set1) {
+            if (set2.has(kyTu)) {
+                soKyTuChung++;
+            }
+        }
+
+        return soKyTuChung;
+    }
+
+    let xau1 = prompt("Nhập xâu thứ nhất: ");
+    let xau2 = prompt("Nhập xâu thứ hai: ");
+    let kyTuChung = soKyTuChung(xau1, xau2);
+
+    alert("Số kí tự chung: " + kyTuChung);
+
+
+</script>
+</body>
+</html>

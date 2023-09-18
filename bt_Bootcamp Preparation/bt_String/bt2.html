@@ -5,6 +5,32 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    function soKyTuKhacNhau(xau1, xau2) {
+        let set1 = new Set(xau1);
+        let set2 = new Set(xau2);
+        let soKyTuKhacNhau = 0;
 
+        for (let kyTu of set1) {
+            if (!set2.has(kyTu)) {
+                soKyTuKhacNhau++;
+            }
+        }
+
+        for (let kyTu of set2) {
+            if (!set1.has(kyTu)) {
+                soKyTuKhacNhau++;
+            }
+        }
+
+        return soKyTuKhacNhau;
+    }
+
+    let xau1 = prompt("Nhập xâu thứ nhất: ");
+    let xau2 = prompt("Nhập xâu thứ hai: ");
+    let kyTuKhacNhau = soKyTuKhacNhau(xau1, xau2);
+
+    alert("Số kí tự khác nhau: " + kyTuKhacNhau);
+</script>
 </body>
 </html>

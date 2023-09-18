@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhTongSoChan(maTran) {
+        let tong = 0;
+        for (let i = 0; i < maTran.length; i++) {
+            for (let j = 0; j < maTran[i].length; j++) {
+                if (maTran[i][j] % 2 === 0) {
+                    tong += maTran[i][j];
+                }
+            }
+        }
+        return tong;
+    }
+
+    let m = parseInt(prompt("Nhập số hàng của ma trận: "));
+    let n = parseInt(prompt("Nhập số cột của ma trận: "));
+    let maTran = [];
+
+    for (let i = 0; i < m; i++) {
+        let hang = [];
+        for (let j = 0; j < n; j++) {
+            let so = parseInt(prompt(`Nhập phần tử thứ ${j + 1} của hàng thứ ${i + 1}: `));
+            hang.push(so);
+        }
+        maTran.push(hang);
+    }
+
+    let tongSoChan = tinhTongSoChan(maTran);
+
+    alert("Tổng các số chẵn trong ma trận là: " + tongSoChan);
+
+</script>
+</body>
+</html>

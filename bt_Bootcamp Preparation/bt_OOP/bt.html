@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px; 
+        }
+    </style>
+</head>
+<body>
+<button onclick="studentManager.displayStudents()">Hiển thị tất cả học viên có trong danh sách</button>
+<button onclick="studentManager.addStudent()">Thêm mới học viên</button>
+<button onclick="studentManager.editStudent()">Sửa thông tin học viên</button>
+<button onclick="studentManager.deleteStudent()">Xóa học viên</button>
+
+<table id="studentTable">
+    <tr>
+        <th>Mã học viên</th>
+        <th>Tên</th>
+        <th>Lớp</th>
+        <th>Email</th>
+        <th>Ngày sinh</th>
+        <th>Module</th>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<!--suppress JSUnusedGlobalSymbols -->
+<script>
+    class Student {
+        constructor(maHocVien, ten, lop, email, ngaySinh, module) {
+            this.maHocVien = maHocVien;
+            this.ten = ten;
+            this.lop = lop;
+            this.email = email;
+            this.ngaySinh = ngaySinh;
+            this.module = module;
+        }
+    }
+
+    class StudentManager {
+        constructor() {
+            this.students = [];
+        }
+
+        addStudent() {
+            let maHocVien = prompt("Nhập mã học viên:");
+            if(!/^HV-\d{4}$/.test(maHocVien)) {
+                alert("Mã học viên không hợp lệ. Mã học viên phải có định dạng HV-XXXX (với XXXX là 4 chữ số).");
+                return;
+            }
+            for(let i = 0; i < this.students.length; i++) {
+                if(this.students[i].maHocVien === maHocVien) {
+                    alert("Mã học viên đã tồn tại.");
+                    return;
+                }
+            }
+
+            let ten = prompt("Nhập tên học viên:");
+            if(ten.length > 50) {
+                alert("Tên học viên không được vượt quá 50 ký tự.");
+                return;
+            }
+
+            let lop = prompt("Nhập lớp:");
+
+            let email = prompt("Nhập email:");
+
+            let ngaySinh = prompt("Nhập ngày sinh (dd/mm/yyyy):");
+            if(!/^\d{2}\/\d{2}\/\d{4}$/.test(ngaySinh)) {
+                alert("Ngày sinh không hợp lệ. Ngày sinh phải có định dạng dd/mm/yyyy.");
+                return;
+            }
+
+            let module = parseInt(prompt("Nhập module:"));
+            if(isNaN(module) || module < 1 || module > 6) {
+                alert("Module không hợp lệ. Module phải là một số từ 1 đến 6.");
+                return;
+            }
+
+            let student = new Student(maHocVien, ten, lop, email, ngaySinh, module);
+            this.students.push(student);
+            this.displayStudents();
+        }
+
+        editStudent() {
+            let maHocVien = prompt("Nhập mã học viên cần sửa:");
+            for(let i = 0; i < this.students.length; i++) {
+                if(this.students[i].maHocVien === maHocVien) {
+                    this.students[i] = new Student(
+                        prompt("Nhập mã học viên:"),
+                        prompt("Nhập tên học viên:"),
+                        prompt("Nhập lớp:"),
+                        prompt("Nhập email:"),
+                        prompt("Nhập ngày sinh (dd/mm/yyyy):"),
+                        prompt("Nhập module:")
+                    );
+                    this.displayStudents();
+                    return;
+                }
+            }
+            alert("Mã học viên không tồn tại");
+        }
+
+        deleteStudent() {
+            let maHocVien = prompt("Nhập mã học viên cần xóa:");
+            for(let i = 0; i < this.students.length; i++) {
+                if(this.students[i].maHocVien === maHocVien) {
+                    if(confirm("Bạn có chắc chắn muốn xóa học viên này không?")) {
+                        this.students.splice(i, 1);
+                        this.displayStudents();
+                    }
+                    return;
+                }
+            }
+            alert("Mã học viên không tồn tại");
+        }
+
+        displayStudents() {
+            let table = document.getElementById('studentTable');
+            table.innerHTML = '<tr><th>Mã học viên</th><th>Tên</th><th>Lớp</th><th>Email</th><th>Ngày sinh</th><th>Module</th></tr>';
+            for(let i = 0; i < this.students.length; i++) {
+                let row = table.insertRow(-1);
+                for(let prop in this.students[i]) {
+                    let cell = row.insertCell(-1);
+                    cell.innerHTML = this.students[i][prop];
+                }
+            }
+        }
+    }
+
+    let studentManager = new StudentManager();
+
+</script>
+</body>
+</html>
