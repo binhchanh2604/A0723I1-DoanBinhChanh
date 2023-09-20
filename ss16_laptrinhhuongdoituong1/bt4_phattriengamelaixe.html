@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>game lái xe</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #game {
+            height: 500px;
+            width: 800px;
+            border: 1px solid black;
+            position: relative;
+        }
+        .car {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 225px; /* Center the car vertically */
+            left: 375px; /* Center the car horizontally */
+            background-image: url('https://images.kienthuc.net.vn/zoomh/500/uploaded/ctvlanbanh/2017_12_15/Mclaren/8_KBTX.jpg');
+            background-size: cover;
+        }
+        .obstacle, .reward {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+        .obstacle {
+            background-color: green;
+        }
+        .reward {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+<div id="score">Score: 0</div>
+<div id="game">
+    <div id="car" class="car"></div>
+    <div id="obstacle" class="obstacle"></div>
+    <div id="reward" class="reward"></div>
+</div>
+
+<script>
+    class Car {
+        constructor(element, gameWidth, gameHeight) {
+            this.element = element;
+            this.gameWidth = gameWidth;
+            this.gameHeight = gameHeight;
+            this.position = { x: gameWidth / 2, y: gameHeight / 2 };
+            this.speed = 5;
+            this.update();
+        }
+
+        update() {
+            this.element.style.left = this.position.x + 'px';
+            this.element.style.top = this.position.y + 'px';
+        }
+
+        moveLeft() {
+            if (this.position.x > 0) {
+                this.position.x -= this.speed;
+                this.update();
+            }
+        }
+
+        moveRight() {
+            if (this.position.x < (this.gameWidth - this.element.offsetWidth)) {
+                this.position.x += this.speed;
+                this.update();
+            }
+        }
+
+        moveUp() {
+            if (this.position.y > 0) {
+                this.position.y -= this.speed;
+                this.update();
+            }
+        }
+
+        moveDown() {
+            if (this.position.y < (this.gameHeight - this.element.offsetHeight)) {
+                this.position.y += this.speed;
+                this.update();
+            }
+        }
+
+        accelerate() {
+            this.speed = 10;
+        }
+
+        decelerate() {
+            this.speed = 5;
+        }
+
+        checkCollision(obstacle) {
+            const carRect = this.element.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+
+            return !(carRect.right < obstacleRect.left ||
+                carRect.left > obstacleRect.right ||
+                carRect.bottom < obstacleRect.top ||
+                carRect.top > obstacleRect.bottom);
+        }
+    }
+
+    const carElement = document.getElementById('car');
+    const obstacleElement = document.getElementById('obstacle');
+    const rewardElement = document.getElementById('reward');
+    const gameElement = document.getElementById('game');
+
+    // Set a random position for the obstacle and reward
+    obstacleElement.style.top = Math.random() * (gameElement.offsetHeight - obstacleElement.offsetHeight) + 'px';
+    obstacleElement.style.left = Math.random() * (gameElement.offsetWidth - obstacleElement.offsetWidth) + 'px';
+
+    rewardElement.style.top = Math.random() * (gameElement.offsetHeight - rewardElement.offsetHeight) + 'px';
+    rewardElement.style.left = Math.random() * (gameElement.offsetWidth - rewardElement.offsetWidth) + 'px';
+
+    const car = new Car(carElement, gameElement.offsetWidth, gameElement.offsetHeight);
+
+    let score = 0;
+
+    window.addEventListener('keydown', function(event) {
+        switch (event.key) {
+            case 'ArrowLeft':
+                car.moveLeft();
+                break;
+            case 'ArrowRight':
+                car.moveRight();
+                break;
+            case 'ArrowUp':
+                car.moveUp();
+                break;
+            case 'ArrowDown':
+                car.moveDown();
+                break;
+            case 'Control':
+                car.accelerate();
+                break;
+        }
+
+        if (car.checkCollision(obstacleElement)) {
+            alert('Game Over');
+            location.reload(); // Refresh the page
+        } else if (car.checkCollision(rewardElement)) {
+            score += 10; // Increase score by 10
+            document.getElementById('score').textContent = 'Score: ' + score; // Update score display
+
+            // Move the reward to a new random position
+            rewardElement.style.top = Math.random() * (gameElement.offsetHeight - rewardElement.offsetHeight) + 'px';
+            rewardElement.style.left = Math.random() * (gameElement.offsetWidth - rewardElement.offsetWidth) + 'px';
+        }
+    });
+
+    window.addEventListener('keyup', function(event) {
+        if (event.key === 'Control') {
+            car.decelerate();
+        }
+    });
+</script>
+</body>
+</html>

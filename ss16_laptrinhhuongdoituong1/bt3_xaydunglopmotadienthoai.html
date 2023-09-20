@@ -1,148 +1,98 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Lớp điện thoại</title>
+    <meta charset="UTF-8">
+    <style>
+        .phone {
+            border: 1px solid black;
+            width: 200px;
+            height: 400px;
+            margin: 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            position: relative;
+        }
+        .phone:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Mobile </h2>
-<div style="display: flex; justify-content: space-between;">
-    <div style="width: 45%;">
-        <h3>Oppo</h3>
-        <p>Trạng thái điện: <span id="oppoPower">Tắt</span></p>
-        <button onclick="checkBattery(Oppo, 'Oppo')">Kiểm tra pin</button>
-        <button onclick="togglePower(Oppo, 'oppoPower')">Bật/Tắt điện</button>
-        <button onclick="draftMessage(Oppo)">Gửi tin nhắn</button>
-        <button onclick="viewInbox(Oppo)">Xem hộp thư đến</button>
-        <button onclick="viewSentMessages(Oppo)">Xem tin đã gửi</button>
+
+<div id="container">
+    <div id="phone1" class="phone">
+        <div id="battery1">100%</div>
+        <button onclick="phone1.turnOn()">Bật điện thoại</button>
+        <button onclick="phone1.turnOff()">Tắt điện thoại</button>
+        <button onclick="phone1.sendMessage(phone2)">Gửi tin nhắn</button>
+        <div id="messages1"></div>
     </div>
 
-    <div style="width: 45%;">
-        <h3>Iphone</h3>
-        <p>Trạng thái điện: <span id="iphonePower">Tắt</span></p>
-        <button onclick="checkBattery(Iphone, 'Iphone')">Kiểm tra pin</button>
-        <button onclick="togglePower(Iphone, 'iphonePower')">Bật/Tắt điện</button>
-        <button onclick="draftMessage(Iphone)">Gửi tin nhắn</button>
-        <button onclick="viewInbox(Iphone)">Xem hộp thư đến</button>
-        <button onclick="viewSentMessages(Iphone)">Xem tin đã gửi</button>
+    <div id="phone2" class="phone">
+        <div id="battery2">100%</div>
+        <button onclick="phone2.turnOn()">Bật điện thoại</button>
+        <button onclick="phone2.turnOff()">Tắt điện thoại</button>
+        <button onclick="phone2.sendMessage(phone1)">Gửi tin nhắn</button>
+        <div id="messages2"></div>
     </div>
 </div>
 
 <script>
-    class Mobile {
-        constructor() {
+    class Phone {
+        constructor(id, batteryId, messagesId) {
             this.battery = 100;
-            this.power = false;
-            this.draft = null;
-            this.inbox = [];
-            this.sent_messages = [];
+            this.isOn = false;
+            this.sentMessages = [];
+            this.receivedMessages = [];
+            this.id = id;
+            this.batteryId = batteryId;
+            this.messagesId = messagesId;
         }
 
-        check_power() {
-            return this.power;
+        turnOn() {
+            this.isOn = true;
+            document.getElementById(this.id).style.backgroundColor = "blue";
         }
 
-        power_on() {
-            if (!this.power && this.battery > 0) {
-                this.power = true;
-                this.battery -= 1;
+        turnOff() {
+            this.isOn = false;
+            document.getElementById(this.id).style.backgroundColor = "red";
+        }
+
+        useBattery() {
+            if (this.battery > 0) {
+                this.battery--;
+                document.getElementById(this.batteryId).innerText = this.battery + "%";
             }
         }
 
-        power_off() {
-            if (this.power && this.battery > 0) {
-                this.power = false;
-                this.battery -= 1;
+        sendMessage(phone) {
+            if (this.isOn) {
+                let message = prompt("Nhập vào tin nhắn muốn gửi:");
+                this.sentMessages.push(message);
+                phone.receiveMessage(message);
+                this.useBattery();
+                document.getElementById(this.messagesId).innerText += "Đã gửi: " + message + "\n";
             }
         }
 
-        charge() {
-            if (this.power && this.battery < 100) {
-                this.battery += 1;
-            }
-        }
-
-        draft_message(message) {
-            if (this.power && this.battery > 0) {
-                this.draft = message;
-                this.battery -= 1;
-            }
-        }
-
-        receive_message(message) {
-            if (this.power && this.battery > 0) {
-                this.inbox.push(message);
-                this.battery -= 1;
-            }
-        }
-
-        send_message(receiver_mobile) {
-            if (this.power && this.draft && receiver_mobile.check_power() && this.battery > 0) {
-                receiver_mobile.receive_message(this.draft);
-                receiver_mobile.inbox.push(this.draft); // Tin nhắn được lưu vào hộp thư đến của người nhận
-                this.sent_messages.push(this.draft); // Tin nhắn được lưu vào hộp thư đã gửi của người gửi
-                this.draft = null;
-                this.battery -= 1;
-            }
-        }
-
-        view_inbox() {
-            if (this.power && this.battery > 0) {
-                console.log(this.inbox);
-                this.battery -= 1;
-            }
-        }
-
-        view_sent_messages() {
-            if (this.power && this.battery > 0) {
-                console.log(this.sent_messages);
-                this.battery -= 1;
+        receiveMessage(message) {
+            if (this.isOn) {
+                this.receivedMessages.push(message);
+                this.useBattery();
+                document.getElementById(this.messagesId).innerText += "Đã nhận: " + message + "\n";
             }
         }
     }
 
-    let Oppo = new Mobile();
-    let Iphone = new Mobile();
-    function checkBattery(mobile, mobileName) {
-        alert(mobileName + " có " + mobile.battery + "% pin còn lại.");
-    }
-
-    function togglePower(mobile, powerId) {
-        if (mobile.check_power()) {
-            mobile.power_off();
-            document.getElementById(powerId).innerHTML = "Tắt";
-        } else {
-            mobile.power_on();
-            document.getElementById(powerId).innerHTML = "Bật";
-        }
-    }
-
-    function charge(mobile) {
-        mobile.charge();
-    }
-
-    function draftMessage(mobile) {
-        let message = prompt("Nhập tin nhắn:");
-        mobile.draft_message(message);
-    }
-
-    function receiveMessage(mobile) {
-        let message = prompt("Nhập tin nhắn để nhận:");
-        mobile.receive_message(message);
-    }
-
-    function sendMessage(mobile, receiver_mobile) {
-        mobile.send_message(receiver_mobile);
-    }
-
-    function viewInbox(mobile) {
-        alert("Hộp thư đến: " + mobile.view_inbox());
-    }
-
-    function viewSentMessages(mobile) {
-        alert("Tin đã gửi: " + mobile.view_sent_messages());
-    }
+    let phone1 = new Phone("phone1", "battery1", "messages1");
+    let phone2 = new Phone("phone2", "battery2", "messages2");
 
 </script>
 
