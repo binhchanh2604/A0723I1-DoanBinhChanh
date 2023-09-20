@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp Temperature</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(celsius) {
+            if (celsius < -273) {
+                throw new Error('Temperature below -273 degrees Celsius is not possible.');
+            }
+            this.celsius = celsius;
+        }
+
+        toFahrenheit() {
+            return this.celsius * 9/5 + 32;
+        }
+
+        toKelvin() {
+            return this.celsius + 273.15;
+        }
+    }
+    let temperature = new Temperature(prompt('Xin mời nhập độ C :'));
+
+    alert('Độ Fahrenheit tương ứng: ' + temperature.toFahrenheit());
+    alert('Độ Kelvin tương ứng: ' + temperature.toKelvin());
+
+</script>
+</body>
+</html>
