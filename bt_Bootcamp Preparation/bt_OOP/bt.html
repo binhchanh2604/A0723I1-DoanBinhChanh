@@ -3,44 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 15px; 
-        }
-    </style>
 </head>
 <body>
-<button onclick="studentManager.displayStudents()">Hiển thị tất cả học viên có trong danh sách</button>
-<button onclick="studentManager.addStudent()">Thêm mới học viên</button>
-<button onclick="studentManager.editStudent()">Sửa thông tin học viên</button>
-<button onclick="studentManager.deleteStudent()">Xóa học viên</button>
-
-<table id="studentTable">
-    <tr>
-        <th>Mã học viên</th>
-        <th>Tên</th>
-        <th>Lớp</th>
-        <th>Email</th>
-        <th>Ngày sinh</th>
-        <th>Module</th>
-    </tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</table>
-
-<!--suppress JSUnusedGlobalSymbols -->
 <script>
+    // Định nghĩa lớp Student với các thuộc tính: mã học viên, tên, lớp, email, ngày sinh, module
     class Student {
         constructor(maHocVien, ten, lop, email, ngaySinh, module) {
             this.maHocVien = maHocVien;
@@ -52,55 +18,39 @@
         }
     }
 
+    // Định nghĩa lớp StudentManager để quản lý danh sách học viên
     class StudentManager {
         constructor() {
-            this.students = [];
+            this.students = []; // Mảng để lưu danh sách học viên
         }
 
+        // Phương thức để thêm học viên mới vào danh sách
         addStudent() {
+            // Yêu cầu người dùng nhập thông tin học viên
             let maHocVien = prompt("Nhập mã học viên:");
-            if(!/^HV-\d{4}$/.test(maHocVien)) {
-                alert("Mã học viên không hợp lệ. Mã học viên phải có định dạng HV-XXXX (với XXXX là 4 chữ số).");
-                return;
-            }
-            for(let i = 0; i < this.students.length; i++) {
-                if(this.students[i].maHocVien === maHocVien) {
-                    alert("Mã học viên đã tồn tại.");
-                    return;
-                }
-            }
-
             let ten = prompt("Nhập tên học viên:");
-            if(ten.length > 50) {
-                alert("Tên học viên không được vượt quá 50 ký tự.");
-                return;
-            }
-
             let lop = prompt("Nhập lớp:");
-
             let email = prompt("Nhập email:");
-
             let ngaySinh = prompt("Nhập ngày sinh (dd/mm/yyyy):");
-            if(!/^\d{2}\/\d{2}\/\d{4}$/.test(ngaySinh)) {
-                alert("Ngày sinh không hợp lệ. Ngày sinh phải có định dạng dd/mm/yyyy.");
-                return;
-            }
-
             let module = parseInt(prompt("Nhập module:"));
-            if(isNaN(module) || module < 1 || module > 6) {
-                alert("Module không hợp lệ. Module phải là một số từ 1 đến 6.");
-                return;
-            }
 
+            // Tạo đối tượng học viên mới và thêm vào danh sách
             let student = new Student(maHocVien, ten, lop, email, ngaySinh, module);
             this.students.push(student);
+
+            // Hiển thị danh sách học viên sau khi thêm
             this.displayStudents();
         }
 
+        // Phương thức để sửa thông tin học viên trong danh sách
         editStudent() {
+            // Yêu cầu người dùng nhập mã học viên cần sửa
             let maHocVien = prompt("Nhập mã học viên cần sửa:");
+
+            // Tìm học viên trong danh sách và cập nhật thông tin
             for(let i = 0; i < this.students.length; i++) {
                 if(this.students[i].maHocVien === maHocVien) {
+                    // Yêu cầu người dùng nhập thông tin mới cho học viên
                     this.students[i] = new Student(
                         prompt("Nhập mã học viên:"),
                         prompt("Nhập tên học viên:"),
@@ -109,42 +59,52 @@
                         prompt("Nhập ngày sinh (dd/mm/yyyy):"),
                         prompt("Nhập module:")
                     );
+
+                    // Hiển thị danh sách học viên sau khi sửa
                     this.displayStudents();
                     return;
                 }
             }
+
+            // Thông báo nếu không tìm thấy học viên với mã đã nhập
             alert("Mã học viên không tồn tại");
         }
 
+        // Phương thức để xóa học viên khỏi danh sách
         deleteStudent() {
+            // Yêu cầu người dùng nhập mã học viên cần xóa
             let maHocVien = prompt("Nhập mã học viên cần xóa:");
+
+            // Tìm và xóa học viên khỏi danh sách
             for(let i = 0; i < this.students.length; i++) {
                 if(this.students[i].maHocVien === maHocVien) {
-                    if(confirm("Bạn có chắc chắn muốn xóa học viên này không?")) {
-                        this.students.splice(i, 1);
-                        this.displayStudents();
-                    }
+                    this.students.splice(i, 1);
+
+                    // Hiển thị danh sách học viên sau khi xóa
+                    this.displayStudents();
                     return;
                 }
             }
+
+            // Thông báo nếu không tìm thấy học viên với mã đã nhập
             alert("Mã học viên không tồn tại");
         }
 
+        // Phương thức để hiển thị danh sách học viên
         displayStudents() {
-            let table = document.getElementById('studentTable');
-            table.innerHTML = '<tr><th>Mã học viên</th><th>Tên</th><th>Lớp</th><th>Email</th><th>Ngày sinh</th><th>Module</th></tr>';
-            for(let i = 0; i < this.students.length; i++) {
-                let row = table.insertRow(-1);
-                for(let prop in this.students[i]) {
-                    let cell = row.insertCell(-1);
-                    cell.innerHTML = this.students[i][prop];
-                }
-            }
+            console.log(this.students);
         }
     }
 
-    let studentManager = new StudentManager();
-
+    // Khởi tạo đối tượng quản lý học viên và gán vào biến global studentManager
+    window.studentManager = new StudentManager();
 </script>
+
+<!-- Các nút để thực hiện các chức năng quản lý -->
+<button onclick="studentManager.displayStudents()">Hiển thị tất cả học viên có trong danh sách</button>
+<button onclick="studentManager.addStudent()">Thêm mới học viên</button>
+<button onclick="studentManager.editStudent()">Sửa thông tin học viên</button>
+<button onclick="studentManager.deleteStudent()">Xóa học viên</button>
+
 </body>
 </html>

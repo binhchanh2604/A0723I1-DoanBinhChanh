@@ -6,40 +6,65 @@
 </head>
 <body>
 <script>
+    // Hàm tìm giá trị lớn nhất và nhỏ nhất trong ma trận
     function timGiaTriLonNhatVaNhoNhat(maTran) {
+        // Khởi tạo giá trị lớn nhất và nhỏ nhất
         let giaTriLonNhat = -Infinity;
         let giaTriNhoNhat = Infinity;
 
+        // Duyệt qua từng hàng của ma trận
         for (let i = 0; i < maTran.length; i++) {
+            // Duyệt qua từng phần tử của hàng
             for (let j = 0; j < maTran[i].length; j++) {
+                // Kiểm tra xem phần tử có lớn hơn giá trị lớn nhất hiện tại không
                 if (maTran[i][j] > giaTriLonNhat) {
+                    // Nếu có thì cập nhật giá trị lớn nhất
                     giaTriLonNhat = maTran[i][j];
                 }
+                // Kiểm tra xem phần tử có nhỏ hơn giá trị nhỏ nhất hiện tại không
                 if (maTran[i][j] < giaTriNhoNhat) {
+                    // Nếu có thì cập nhật giá trị nhỏ nhất
                     giaTriNhoNhat = maTran[i][j];
                 }
             }
         }
 
+        // Trả về giá trị lớn nhất và nhỏ nhất
         return {giaTriLonNhat, giaTriNhoNhat};
     }
 
+    // Yêu cầu người dùng nhập số hàng và số cột của ma trận
     let m = parseInt(prompt("Nhập số hàng của ma trận: "));
     let n = parseInt(prompt("Nhập số cột của ma trận: "));
+
+    // Khởi tạo ma trận rỗng
     let maTran = [];
 
+    // Duyệt qua từng hàng của ma trận
     for (let i = 0; i < m; i++) {
+        // Khởi tạo mảng để lưu các phần tử của hàng
         let hang = [];
+
+        // Duyệt qua từng cột của hàng
         for (let j = 0; j < n; j++) {
+            // Yêu cầu người dùng nhập phần tử
             let so = parseInt(prompt(`Nhập phần tử thứ ${j + 1} của hàng thứ ${i + 1}: `));
+
+            // Thêm phần tử vào hàng
             hang.push(so);
         }
+
+        // Thêm hàng vào ma trận
         maTran.push(hang);
     }
 
+    // Gọi hàm tìm giá trị lớn nhất và nhỏ nhất trong ma trận và lưu kết quả vào biến {giaTriLonNhat, giaTriNhoNhat}
     let {giaTriLonNhat, giaTriNhoNhat} = timGiaTriLonNhatVaNhoNhat(maTran);
 
+    // Hiển thị giá trị lớn nhất trong ma trận cho người dùng
     alert("Giá trị lớn nhất trong ma trận là: " + giaTriLonNhat);
+
+    // Hiển thị giá trị nhỏ nhất trong ma trận cho người dùng
     alert("Giá trị nhỏ nhất trong ma trận là: " + giaTriNhoNhat);
 
 </script>

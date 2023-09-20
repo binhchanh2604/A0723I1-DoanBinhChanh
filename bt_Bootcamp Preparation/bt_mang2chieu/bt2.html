@@ -6,48 +6,76 @@
 </head>
 <body>
 <script>
+    // Hàm kiểm tra số nguyên tố
     function laSoNguyenTo(n) {
+        // Nếu n <= 1 thì không phải là số nguyên tố
         if (n <= 1) {
             return false;
         }
+        // Kiểm tra từ 2 đến căn bậc hai của n
         for (let i = 2; i * i <= n; i++) {
+            // Nếu n chia hết cho i thì không phải là số nguyên tố
             if (n % i === 0) {
                 return false;
             }
         }
+        // Nếu không chia hết cho bất kỳ số nào thì là số nguyên tố
         return true;
     }
 
+    // Hàm liệt kê và đếm số nguyên tố trong ma trận
     function lietKeVaDemSoNguyenTo(maTran) {
+        // Khởi tạo mảng để lưu các số nguyên tố
         let soNguyenTo = [];
+
+        // Duyệt qua từng hàng của ma trận
         for (let i = 0; i < maTran.length; i++) {
+            // Duyệt qua từng phần tử của hàng
             for (let j = 0; j < maTran[i].length; j++) {
+                // Kiểm tra xem phần tử có phải là số nguyên tố không
                 if (laSoNguyenTo(maTran[i][j])) {
+                    // Thêm phần tử vào mảng nếu là số nguyên tố
                     soNguyenTo.push(maTran[i][j]);
                 }
             }
         }
+        // Trả về mảng các số nguyên tố
         return soNguyenTo;
     }
 
+    // Yêu cầu người dùng nhập số hàng và số cột của ma trận
     let m = parseInt(prompt("Nhập số hàng của ma trận: "));
     let n = parseInt(prompt("Nhập số cột của ma trận: "));
+
+    // Khởi tạo ma trận rỗng
     let maTran = [];
 
+    // Duyệt qua từng hàng của ma trận
     for (let i = 0; i < m; i++) {
+        // Khởi tạo mảng để lưu các phần tử của hàng
         let hang = [];
+
+        // Duyệt qua từng cột của hàng
         for (let j = 0; j < n; j++) {
+            // Yêu cầu người dùng nhập phần tử
             let so = parseInt(prompt(`Nhập phần tử thứ ${j + 1} của hàng thứ ${i + 1}: `));
+
+            // Thêm phần tử vào hàng
             hang.push(so);
         }
+
+        // Thêm hàng vào ma trận
         maTran.push(hang);
     }
 
+    // Gọi hàm liệt kê và đếm số nguyên tố trong ma trận và lưu kết quả vào biến soNguyenTo
     let soNguyenTo = lietKeVaDemSoNguyenTo(maTran);
 
+    // Hiển thị các số nguyên tố trong ma trận cho người dùng
     alert("Các số nguyên tố trong ma trận: " + soNguyenTo.join(", "));
-    alert("Số lượng số nguyên tố trong ma trận: " + soNguyenTo.length);
 
+    // Hiển thị số lượng số nguyên tố trong ma trận cho người dùng
+    alert("Số lượng số nguyên tố trong ma trận: " + soNguyenTo.length);
 
 </script>
 </body>

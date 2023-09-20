@@ -6,24 +6,26 @@
 </head>
 <body>
 <script>
-    function maxFraction(numerators, denominators) {
-        let maxFraction = -Infinity;
-        let maxIndex = -1;
+    // Hàm tìm các phần tử chỉ xuất hiện trong mảng B nhưng không xuất hiện trong mảng A
+    function findUniqueElements(A, B) {
+        // Chuyển đổi mảng A và B thành Set để loại bỏ các phần tử trùng lặp
+        let setA = new Set(A);
+        let setB = new Set(B);
 
-        for (let i = 0; i < numerators.length; i++) {
-            let fractionValue = numerators[i] / denominators[i];
+        // Tìm các phần tử chỉ xuất hiện trong setB nhưng không xuất hiện trong setA
+        let difference = new Set([...setB].filter(x => !setA.has(x)));
 
-            if (fractionValue > maxFraction) {
-                maxFraction = fractionValue;
-                maxIndex = i;
-            }
-        }
-
-        return maxIndex;
+        // Chuyển đổi Set thành mảng và sắp xếp theo thứ tự tăng dần
+        return Array.from(difference).sort((a, b) => a - b);
     }
-    let numerators = [5, 2, 5];
-    let denominators = [6, 3, 4];
-    console.log(maxFraction(numerators, denominators));
+
+    // Yêu cầu người dùng nhập hai dãy số nguyên A và B
+    let A = prompt('Nhập dãy số nguyên A :');
+    let B = prompt('Nhập dãy số nguyên B :');
+
+    // Gọi hàm tìm các phần tử duy nhất và hiển thị kết quả cho người dùng
+    alert(findUniqueElements('MissingValue(A, B) = ' + A, B));
+
 </script>
 </body>
 </html>

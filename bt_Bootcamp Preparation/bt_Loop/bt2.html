@@ -6,24 +6,38 @@
 </head>
 <body>
 <script>
+    // Hàm vẽ tam giác cân
     function veTamGiacCan(h) {
+        // Khởi tạo chuỗi để lưu tam giác
         let tamGiac = "";
+
+        // Vòng lặp tạo ra các hàng của tam giác
         for (let i = 0; i < h; i++) {
+            // Vòng lặp tạo ra các khoảng trắng trước mỗi hàng
             for (let j = 0; j < h - i - 1; j++) {
                 tamGiac += " ";
             }
+            // Vòng lặp tạo ra các ký tự "*" cho mỗi hàng
             for (let k = 0; k < 2 * i + 1; k++) {
                 tamGiac += "*";
             }
+            // Thêm ký tự xuống dòng sau mỗi hàng
             tamGiac += "\n";
         }
+        // Trả về chuỗi tam giác
         return tamGiac;
     }
 
+    // Yêu cầu người dùng nhập chiều cao của tam giác
     let h = prompt("Nhập chiều cao của tam giác: ");
+
+    // Chuyển đổi chuỗi nhập vào thành số nguyên
     h = parseInt(h);
+
+    // Gọi hàm vẽ tam giác và lưu kết quả vào biến tamGiac
     let tamGiac = veTamGiacCan(h);
 
+    // Hiển thị tam giác cho người dùng
     alert(tamGiac);
 
 </script>

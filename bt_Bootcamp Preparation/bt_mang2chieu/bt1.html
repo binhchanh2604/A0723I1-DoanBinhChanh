@@ -6,33 +6,55 @@
 </head>
 <body>
 <script>
+    // Hàm tính tổng các số chẵn trong ma trận
     function tinhTongSoChan(maTran) {
+        // Khởi tạo biến tổng
         let tong = 0;
+
+        // Duyệt qua từng hàng của ma trận
         for (let i = 0; i < maTran.length; i++) {
+            // Duyệt qua từng phần tử của hàng
             for (let j = 0; j < maTran[i].length; j++) {
+                // Kiểm tra xem phần tử có phải là số chẵn không
                 if (maTran[i][j] % 2 === 0) {
+                    // Cộng phần tử vào tổng nếu là số chẵn
                     tong += maTran[i][j];
                 }
             }
         }
+        // Trả về tổng
         return tong;
     }
 
+    // Yêu cầu người dùng nhập số hàng và số cột của ma trận
     let m = parseInt(prompt("Nhập số hàng của ma trận: "));
     let n = parseInt(prompt("Nhập số cột của ma trận: "));
+
+    // Khởi tạo ma trận rỗng
     let maTran = [];
 
+    // Duyệt qua từng hàng của ma trận
     for (let i = 0; i < m; i++) {
+        // Khởi tạo mảng để lưu các phần tử của hàng
         let hang = [];
+
+        // Duyệt qua từng cột của hàng
         for (let j = 0; j < n; j++) {
+            // Yêu cầu người dùng nhập phần tử
             let so = parseInt(prompt(`Nhập phần tử thứ ${j + 1} của hàng thứ ${i + 1}: `));
+
+            // Thêm phần tử vào hàng
             hang.push(so);
         }
+
+        // Thêm hàng vào ma trận
         maTran.push(hang);
     }
 
+    // Gọi hàm tính tổng các số chẵn trong ma trận và lưu kết quả vào biến tongSoChan
     let tongSoChan = tinhTongSoChan(maTran);
 
+    // Hiển thị tổng các số chẵn trong ma trận cho người dùng
     alert("Tổng các số chẵn trong ma trận là: " + tongSoChan);
 
 </script>

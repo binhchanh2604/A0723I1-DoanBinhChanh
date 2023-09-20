@@ -6,24 +6,33 @@
 </head>
 <body>
 <script>
+    // Hàm để tính thuế và lương ròng
     function tinhThueVaLuongRong(luong) {
         let thue;
+        // Tính thuế dựa trên lương
         if (luong >= 15) {
-            thue = luong * 0.2;
+            thue = luong * 0.2;  // Thuế 20% nếu lương >= 15 triệu
         } else if (luong >= 7) {
-            thue = luong * 0.1;
+            thue = luong * 0.1;  // Thuế 10% nếu lương >= 7 triệu
         } else {
-            thue = luong * 0.05;
+            thue = luong * 0.05; // Thuế 5% nếu lương < 7 triệu
         }
 
+        // Tính lương ròng bằng cách trừ thuế khỏi lương
         let luongRong = luong - thue;
+
+        // Trả về thuế và lương ròng
         return {thue, luongRong};
     }
 
+    // Nhập lương từ người dùng
     let luong = prompt("Nhập lương của bạn (triệu VND): ");
-    luong = parseFloat(luong);
+    luong = parseFloat(luong);  // Chuyển đổi chuỗi nhập vào thành số thực
+
+    // Tính thuế và lương ròng từ lương nhập vào
     let {thue, luongRong} = tinhThueVaLuongRong(luong);
 
+    // Hiển thị thuế và lương ròng
     alert("Thuế thu nhập: " + thue + " triệu VND");
     alert("Lương ròng: " + luongRong + " triệu VND");
 

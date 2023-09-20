@@ -6,20 +6,28 @@
 </head>
 <body>
 <script>
+    // Khởi tạo chiều cao của tam giác
     let h = 5;
+    // Khởi tạo chuỗi để lưu tam giác
     let tamGiac = "";
 
+    // Vòng lặp tạo ra các hàng của tam giác
     for (let i = 0; i < h; i++) {
+        // Vòng lặp tạo ra các cột của tam giác
         for (let j = 0; j <= i; j++) {
+            // Điều kiện để in ra ký tự "*"
             if (i === h - 1 || j === 0 || j === i) {
                 tamGiac += "*";
             } else {
+                // Nếu không thỏa mãn điều kiện trên thì in ra ký tự " "
                 tamGiac += " ";
             }
         }
+        // Thêm ký tự xuống dòng sau mỗi hàng
         tamGiac += "\n";
     }
 
+    // Hiển thị tam giác cho người dùng
     alert(tamGiac);
 </script>
 </body>

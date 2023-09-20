@@ -6,18 +6,31 @@
 </head>
 <body>
 <script>
+    // Hàm tính tổng tiền tố của mảng
     function prefixSums(a) {
+        // Khởi tạo mảng mới b với độ dài giống mảng a
         let b = new Array(a.length);
+
+        // Gán phần tử đầu tiên của mảng b bằng phần tử đầu tiên của mảng a
         b[0] = a[0];
+
+        // Duyệt qua từng phần tử còn lại của mảng a
         for (let i = 1; i < a.length; i++) {
+            // Gán phần tử thứ i của mảng b bằng tổng của phần tử thứ i và phần tử thứ i - 1 của mảng b
             b[i] = b[i - 1] + a[i];
         }
+
+        // Trả về mảng b
         return b;
     }
 
+    // Yêu cầu người dùng nhập mảng số nguyên, cách nhau bởi dấu phẩy
     let a = prompt("Nhập mảng số nguyên, cách nhau bởi dấu phẩy: ").split(',').map(Number);
+
+    // Gọi hàm tính tổng tiền tố của mảng và lưu kết quả vào biến b
     let b = prefixSums(a);
 
+    // Hiển thị mảng a và mảng b (tổng tiền tố của a) cho người dùng
     console.log("Mảng a: ", a);
     console.log("Mảng b (prefix sums của a): ", b);
 </script>

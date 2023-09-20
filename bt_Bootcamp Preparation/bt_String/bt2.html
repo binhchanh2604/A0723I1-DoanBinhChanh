@@ -6,30 +6,45 @@
 </head>
 <body>
 <script>
+    // Hàm tính số ký tự khác nhau giữa hai xâu
     function soKyTuKhacNhau(xau1, xau2) {
+        // Chuyển đổi xâu 1 và xâu 2 thành Set để loại bỏ các ký tự trùng lặp
         let set1 = new Set(xau1);
         let set2 = new Set(xau2);
+
+        // Khởi tạo biến đếm số ký tự khác nhau
         let soKyTuKhacNhau = 0;
 
+        // Duyệt qua từng ký tự của set1
         for (let kyTu of set1) {
+            // Kiểm tra xem ký tự có xuất hiện trong set2 không
             if (!set2.has(kyTu)) {
+                // Nếu không thì tăng biến đếm lên 1
                 soKyTuKhacNhau++;
             }
         }
 
+        // Duyệt qua từng ký tự của set2
         for (let kyTu of set2) {
+            // Kiểm tra xem ký tự có xuất hiện trong set1 không
             if (!set1.has(kyTu)) {
+                // Nếu không thì tăng biến đếm lên 1
                 soKyTuKhacNhau++;
             }
         }
 
+        // Trả về số ký tự khác nhau
         return soKyTuKhacNhau;
     }
 
+    // Yêu cầu người dùng nhập vào hai xâu ký tự
     let xau1 = prompt("Nhập xâu thứ nhất: ");
     let xau2 = prompt("Nhập xâu thứ hai: ");
+
+    // Gọi hàm tính số ký tự khác nhau và lưu kết quả vào biến kyTuKhacNhau
     let kyTuKhacNhau = soKyTuKhacNhau(xau1, xau2);
 
+    // Hiển thị số ký tự khác nhau cho người dùng
     alert("Số kí tự khác nhau: " + kyTuKhacNhau);
 </script>
 </body>

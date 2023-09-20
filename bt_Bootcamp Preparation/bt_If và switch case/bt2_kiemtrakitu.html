@@ -6,20 +6,32 @@
 </head>
 <body>
 <script>
+    // Hàm kiểm tra ký tự
     function kiemTraKyTu(kyTu) {
+        // Mảng chứa các nguyên âm
         let nguyenAm = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+
+        // Kiểm tra xem ký tự có phải là nguyên âm không
         if (nguyenAm.includes(kyTu)) {
             return "Nguyên âm";
-        } else if ((kyTu >= 'a' && kyTu <= 'z') || (kyTu >= 'A' && kyTu <= 'Z')) {
+        }
+        // Kiểm tra xem ký tự có phải là phụ âm không
+        else if ((kyTu >= 'a' && kyTu <= 'z') || (kyTu >= 'A' && kyTu <= 'Z')) {
             return "Phụ âm";
-        } else {
+        }
+        // Nếu không phải là nguyên âm hoặc phụ âm thì trả về thông báo
+        else {
             return "Không phải là một ký tự trong bảng chữ cái tiếng Anh";
         }
     }
 
+    // Yêu cầu người dùng nhập một ký tự
     let kyTu = prompt("Nhập một ký tự: ");
+
+    // Gọi hàm kiểm tra ký tự và lưu kết quả vào biến ketQua
     let ketQua = kiemTraKyTu(kyTu);
 
+    // Hiển thị kết quả cho người dùng
     alert(kyTu + " là " + ketQua);
 </script>
 </body>

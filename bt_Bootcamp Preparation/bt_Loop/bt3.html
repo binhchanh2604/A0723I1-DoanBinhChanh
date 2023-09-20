@@ -6,25 +6,40 @@
 </head>
 <body>
 <script>
+    // Hàm vẽ tam giác rỗng
     function veTamGiacRong(h) {
+        // Khởi tạo chuỗi để lưu tam giác
         let tamGiac = "";
+
+        // Vòng lặp tạo ra các hàng của tam giác
         for (let i = 0; i < h; i++) {
+            // Vòng lặp tạo ra các cột của tam giác
             for (let j = 0; j <= i; j++) {
+                // Điều kiện để in ra ký tự "*"
                 if (i === h - 1 || j === 0 || j === i) {
                     tamGiac += "*";
                 } else {
+                    // Nếu không thỏa mãn điều kiện trên thì in ra ký tự " "
                     tamGiac += " ";
                 }
             }
+            // Thêm ký tự xuống dòng sau mỗi hàng
             tamGiac += "\n";
         }
+        // Trả về chuỗi tam giác
         return tamGiac;
     }
 
+    // Yêu cầu người dùng nhập chiều cao của tam giác
     let h = prompt("Nhập chiều cao của tam giác: ");
+
+    // Chuyển đổi chuỗi nhập vào thành số nguyên
     h = parseInt(h);
+
+    // Gọi hàm vẽ tam giác và lưu kết quả vào biến tamGiac
     let tamGiac = veTamGiacRong(h);
 
+    // Hiển thị tam giác cho người dùng
     alert(tamGiac);
 </script>
 </body>

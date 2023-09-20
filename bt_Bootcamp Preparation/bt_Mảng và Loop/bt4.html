@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        /* Định dạng CSS cho trang web */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -38,6 +39,7 @@
 <body>
 
 <h2>Menu</h2>
+<!-- Các nút để gọi món -->
 <button onclick="orderDrink(1)">1. Cafe - 20000 VND</button><br>
 <button onclick="orderDrink(2)">2. Cam vắt - 30000 VND</button><br>
 <button onclick="orderDrink(3)">3. Nước ép cà rốt - 25000 VND</button><br>
@@ -49,6 +51,7 @@
 <p id="total"></p>
 
 <script>
+    // Mảng chứa menu
     let menu = {
         1: {name: 'Cafe', price: 20000},
         2: {name: 'Cam vắt', price: 30000},
@@ -58,15 +61,24 @@
         6: {name: 'Nước dừa', price: 15000}
     };
 
+    // Biến để lưu tổng tiền
     let total = 0;
 
+    // Hàm để gọi món
     function orderDrink(choice) {
+        // Yêu cầu người dùng nhập số lượng
         let quantity = Number(prompt('Nhập số lượng:'));
+
+        // Cập nhật tổng tiền
         total += menu[choice].price * quantity;
+
+        // Hiển thị tổng tiền hiện tại
         document.getElementById("total").innerHTML = 'Tổng tiền hiện tại: ' + total + ' VND';
     }
 
+    // Hàm để kết thúc gọi món
     function endOrder() {
+        // Hiển thị tổng tiền cần thanh toán
         document.getElementById("total").innerHTML = 'Tổng tiền cần thanh toán: ' + total + ' VND';
     }
 </script>
